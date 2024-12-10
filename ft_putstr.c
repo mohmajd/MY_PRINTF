@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:48:50 by mohmajdo          #+#    #+#             */
-/*   Updated: 2024/11/23 16:48:52 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2024/11/24 00:49:12 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *s)
 {
 	int	i;
 
+	if (!s)
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
 	i = 0;
 	while (s[i])
 	{

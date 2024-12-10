@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:48:28 by mohmajdo          #+#    #+#             */
-/*   Updated: 2024/11/23 16:48:30 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2024/11/24 01:10:31 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	ft_nmblen(int i)
 {
@@ -34,12 +34,19 @@ static int	ft_nmblen(int i)
 
 int	ft_putnbr(int i)
 {
-	if (i == "-2147483648")
+	int	nb;
+
+	nb = i;
+	if (i == -2147483648)
+	{
 		write(1, "-2147483648", 11);
+		return (11);
+	}
 	else if (i < 0)
 	{
 		write(1, "-", 1);
 		i = -i;
+		ft_putnbr(i);
 	}
 	else if (i > 9)
 	{
@@ -47,6 +54,6 @@ int	ft_putnbr(int i)
 		ft_putnbr(i % 10);
 	}
 	else
-		write(1, &i, 1);
-	return (ft_nmblen(i));
+		ft_putchar(i + '0');
+	return (ft_nmblen(nb));
 }
